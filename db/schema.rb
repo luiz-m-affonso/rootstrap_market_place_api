@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_031613) do
+ActiveRecord::Schema.define(version: 2022_05_09_023243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -103,6 +103,16 @@ ActiveRecord::Schema.define(version: 2021_09_10_031613) do
     t.index ["error_group_id"], name: "index_exception_hunter_errors_on_error_group_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.decimal "price"
+    t.boolean "published"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "key", null: false
     t.string "value"
@@ -137,4 +147,5 @@ ActiveRecord::Schema.define(version: 2021_09_10_031613) do
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
+  add_foreign_key "products", "users"
 end
