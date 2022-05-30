@@ -36,6 +36,8 @@ class User < ApplicationRecord
          :recoverable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  attr_reader :email, :password, :first_name, :last_name, :username, :uid
+
   validates :uid, uniqueness: { scope: :provider }
 
   before_validation :init_uid
@@ -53,6 +55,17 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.assign_attributes user_params.except('id')
     end
+  end
+
+  def to_hash
+    {
+      email: @email,
+      password: @password,
+      first_name: @first_name,
+      last_name: @last_name,
+      username: @username,
+      uid: @uid
+    }
   end
 
   private
