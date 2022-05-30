@@ -1,4 +1,4 @@
 module Exceptions
-  class ProductNotFoundException < StandardError
+  class ProductFoundException < StandardError
   end
 end
