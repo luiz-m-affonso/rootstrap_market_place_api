@@ -1,6 +1,6 @@
 module Domain
   class User
-    attr_reader :name, :email, :encrypted_password,
+    attr_reader :name, :email, :first_name, :last_name, :username, :provider
 
     def initialize(name:, email:, first_name:, last_name:, username:, provider:)
       @name = name
@@ -18,7 +18,7 @@ module Domain
         first_name: @first_name,
         last_name: @last_name,
         username: @username,
-        provider: @provider,
+        provider: @provider
       }
     end
   end
