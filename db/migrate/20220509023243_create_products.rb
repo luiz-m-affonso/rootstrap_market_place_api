@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :title
       t.decimal :price
       t.boolean :published
-      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
