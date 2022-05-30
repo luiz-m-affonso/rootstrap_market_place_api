@@ -20,5 +20,20 @@ module Domain
         expect(product.user_id).to eq(1)
       end
     end
+
+    describe '#to_hash' do
+      let(:product_hash) do
+        {
+          title: 'Product title',
+          price: 100,
+          published: true,
+          user_id: user.id
+        }
+      end
+
+      it 'should return a hash' do
+        expect(product.to_hash).to eq(product_hash)
+      end
+    end
   end
 end
