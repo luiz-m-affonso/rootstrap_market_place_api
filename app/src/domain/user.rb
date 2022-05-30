@@ -1,24 +1,24 @@
 module Domain
   class User
-    attr_reader :name, :email, :first_name, :last_name, :username, :provider
+    attr_reader :email, :password, :first_name, :last_name, :username, :uid
 
-    def initialize(name:, email:, first_name:, last_name:, username:, provider:)
-      @name = name
+    def initialize(email:, password:, first_name:, last_name:, username:, uid:)
       @email = email
+      @password = password
       @first_name = first_name
       @last_name = last_name
       @username = username
-      @provider = provider
+      @uid = uid
     end
 
     def to_hash
       {
-        name: @name,
         email: @email,
+        password: @password,
         first_name: @first_name,
         last_name: @last_name,
         username: @username,
-        provider: @provider
+        uid: @uid
       }
     end
   end
